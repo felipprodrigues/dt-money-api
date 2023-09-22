@@ -1,0 +1,19 @@
+POST http://localhost:3333/transactions
+Content-Type: application/json
+
+{
+  "description": "Dog vet",
+      "price": 245,
+      "category": "Pet care",
+      "type": "outcome",
+      "createdAt": "2023-09-20T19:09:17.527Z"
+}
+
+###
+
+GET http://localhost:3333/transactions
+
+###
+
+
+DELETE http://localhost:3333/transactions/ecdcf4d9-a805-413a-bf92-6e9e14025422

@@ -1,20 +1,20 @@
-import fastify from "fastify";
+import {fastify} from 'fastify'
+import {DatabasePostgres} from "./database-postgres.js";
 
 const server = fastify()
 
-server.post('/transactions', (request, reply) => {
+const database = new DatabasePostgres()
+
+server.post('/transactions', async(request, reply) => {
   const {description, price, category, type, createdAt} = request.body
 
-  // let banco = {}
-
-  // const banco.create({
-  //   description,
-  //   price,
-  //   category,
-  //   type,
-  //   createdAt,
-  // })
-  console.log('it works')
+  await database.create({
+    description,
+    price,
+    category,
+    type,
+    createdAt
+  })
 
   return reply.status(201).send()
 })
@@ -22,7 +22,7 @@ server.post('/transactions', (request, reply) => {
 server.get('/transactions', (request, reply) => {
   // const search = request.query.search // Se existir
 
-  // const transactions = banco.list() //se existir query, passar dentro de list
+  const transactions = database.list() //se existir query, passar dentro de list
 
   return transactions
 })
@@ -30,11 +30,12 @@ server.get('/transactions', (request, reply) => {
 server.delete('/transactions/:id', (request, reply) => {
   const transactionId = request.params.id
 
-  // banco.delete(transactionId)
+  database.delete(transactionId)
 
   return reply.status(204).send()
 })
 
 server.listen({
-  port: 3332
+  host: '0.0.0.0',
+  port: process.env.PORT ?? 3333
 })
