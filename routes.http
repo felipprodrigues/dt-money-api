@@ -12,6 +12,8 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3333/transactions
+Content-Type: application/json,
+Access-Control-Allow-Origin: http://localhost:5173,
 
 ###
 

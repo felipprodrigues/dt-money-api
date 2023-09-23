@@ -1,9 +1,16 @@
 import {fastify} from 'fastify'
 import {DatabasePostgres} from "./database-postgres.js";
+import fastifyCors from '@fastify/cors';
 
 const server = fastify()
 
 const database = new DatabasePostgres()
+
+server.register(fastifyCors, {
+  origin: 'http://localhost:5173', // Replace '*' with the allowed origins as needed
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  allowedHeaders: 'Content-Type,Authorization',
+});
 
 server.post('/transactions', async(request, reply) => {
   const {description, price, category, type, createdAt} = request.body
