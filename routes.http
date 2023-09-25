@@ -2,11 +2,11 @@ POST http://localhost:3333/transactions
 Content-Type: application/json
 
 {
-  "description": "Dog vet",
-      "price": 245,
-      "category": "Pet care",
-      "type": "outcome",
-      "createdAt": "2023-09-20T19:09:17.527Z"
+  "description": "Groceries",
+  "price": 312,
+  "category": "Food",
+  "type": "outcome",
+  "createdAt": "2023-09-20T19:09:17.527Z"
 }
 
 ###

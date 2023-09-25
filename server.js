@@ -7,8 +7,8 @@ const server = fastify()
 const database = new DatabasePostgres()
 
 server.register(fastifyCors, {
-  origin: 'http://localhost:5173', // Replace '*' with the allowed origins as needed
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  origin: ['http://localhost:5173', 'https://dt-money-dashboard.vercel.app/'], // Replace '*' with the allowed origins as needed
+  methods: 'GET,PUT,POST,DELETE',
   allowedHeaders: 'Content-Type,Authorization',
 });
 
